@@ -22,9 +22,34 @@ func lesson3() map[string]int {
 	m := map[string]int{"Mike": 20, "Nancy": 25, "Messi": 30}
 	return m
 }
+
+func rangeExample() {
+	l := []string{"go", "python", "java", "c++", "javascript"}
+	for i, v := range l {
+		fmt.Println(i, v)
+	}
+
+	for k := range l {
+		fmt.Println(k)
+	}
+}
+
+func mapRangeExample() {
+	m := map[string]int{"Mike": 20, "Nancy": 25, "Messi": 30}
+	for k, v := range m {
+		fmt.Println(k, v)
+	}
+
+	for k := range m {
+		fmt.Println(k)
+	}
+}
+
 func main() {
 	fmt.Println(lesson1())
 	fmt.Println(lesson2())
 	m := lesson3()
 	fmt.Printf("%T %v\n", m, m)
+	rangeExample()
+	mapRangeExample()
 }
