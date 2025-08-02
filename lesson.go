@@ -4,52 +4,36 @@ import (
 	"fmt"
 )
 
-// Q1. 以下の1.11をint型に変換して出力してください。
-func lesson1() int {
-	f := 1.11
-	i := int(f)
-	return i
+// Q1 . 以下のスライスから一番小さい数を探して出力するコードを書いてください。
+func minimum(a []int) int {
+	min := 0
+	for i := 0; i < len(a); i++ {
+		if i == 0 || a[i] < min {
+			min = a[i]
+		}
+	}
+	return min
 }
 
-// Q2. コードを書かずに以下の出力結果を答えてください。
-func lesson2() []int {
-	s := []int{1, 2, 5, 6, 2, 3, 1}
-	return s[2:4]
-}
-
-// Q3. 以下のコードを実行した時に
-func lesson3() map[string]int {
-	m := map[string]int{"Mike": 20, "Nancy": 25, "Messi": 30}
-	return m
-}
-
-func rangeExample() {
-	l := []string{"go", "python", "java", "c++", "javascript"}
-	for i, v := range l {
-		fmt.Println(i, v)
+// Q2. 以下の果物の価格の合計を出力するコードを書いてください。
+func totalPrice(prices map[string]int) int {
+	total := 0
+	for _, price := range prices {
+		total += price
 	}
-
-	for k := range l {
-		fmt.Println(k)
-	}
-}
-
-func mapRangeExample() {
-	m := map[string]int{"Mike": 20, "Nancy": 25, "Messi": 30}
-	for k, v := range m {
-		fmt.Println(k, v)
-	}
-
-	for k := range m {
-		fmt.Println(k)
-	}
+	return total
 }
 
 func main() {
-	fmt.Println(lesson1())
-	fmt.Println(lesson2())
-	m := lesson3()
-	fmt.Printf("%T %v\n", m, m)
-	rangeExample()
-	mapRangeExample()
+	l := []int{100, 300, 23, 11, 23, 2, 4, 6, 4}
+	fmt.Println("Minimum:", minimum(l))
+	totalPrice := totalPrice(map[string]int{
+		"apple":  200,
+		"banana": 300,
+		"grapes": 150,
+		"orange": 80,
+		"papaya": 520,
+		"kiwi":   90,
+	})
+	fmt.Println("Total Price:", totalPrice)
 }
